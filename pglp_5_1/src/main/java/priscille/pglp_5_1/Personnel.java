@@ -12,6 +12,10 @@ import java.util.ArrayList;
  */
 public final class Personnel implements InterfacePersonnel, Serializable {
     /**
+     * Attribut de sérialisation.
+     */
+    private static final long serialVersionUID = 1L;
+    /**
      * Nom du membre du personnel.
      */
     private final String nom;
@@ -93,51 +97,54 @@ public final class Personnel implements InterfacePersonnel, Serializable {
     }
     /**
      * Fonction de sérialisation.
-     * @param path
+     * @param path Adresse du fichier
      */
-    public void serialization(String path) {
-    	ObjectOutputStream oos = null;
-    	try {
-    		final FileOutputStream fichierOut = new FileOutputStream(path);
-    		oos = new ObjectOutputStream(fichierOut);
-    		oos.writeObject(this);
-    		oos.flush();
-    		oos.close();	
-    	} catch (final java.io.IOException e) {
-    		e.printStackTrace();
-    	} finally {
-    		try {
-    			if(oos != null) {
-    				oos.flush();
-    				oos.close();
-    			}
-    		} catch (final java.io.IOException ex) {
-    			ex.printStackTrace();
-    		}
-    	}
+    public void serialization(final String path) {
+        ObjectOutputStream oos = null;
+        try {
+            final FileOutputStream fichierOut = new FileOutputStream(path);
+            oos = new ObjectOutputStream(fichierOut);
+            oos.writeObject(this);
+            oos.flush();
+            oos.close();
+        } catch (final java.io.IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.flush();
+                    oos.close();
+                }
+            } catch (final java.io.IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
     /**
      * Fonction de désérialisation.
-     * @param path
+     * @param path Adresse du fichier
+     * @return Le personnel deserialisé
      */
-    public static void deSerialization(String path) {
-    	ObjectInputStream ois = null;
-    	try {
-    		final FileInputStream fichierIn = new FileInputStream(path);
-    		ois = new ObjectInputStream(fichierIn);
-    		final Personnel p = (Personnel) ois.readObject();
-    	} catch (final java.io.IOException e) {
-    		e.printStackTrace();
-    	} catch (final ClassNotFoundException e) {
-    		e.printStackTrace();
-    	} finally {
-    		try {
-    			if (ois != null) {
-    				ois.close();
-    			}
-    		} catch (final java.io.IOException ex) {
-    			ex.printStackTrace();
-    		}
-    	}
+    public static Personnel deSerialization(final String path) {
+        ObjectInputStream ois = null;
+        Personnel p = null;
+        try {
+            final FileInputStream fichierIn = new FileInputStream(path);
+            ois = new ObjectInputStream(fichierIn);
+            p = (Personnel) ois.readObject();
+        } catch (final java.io.IOException e) {
+            e.printStackTrace();
+        } catch (final ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (final java.io.IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return p;
     }
 }

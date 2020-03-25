@@ -1,5 +1,10 @@
 package priscille.pglp_5_1;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -8,7 +13,11 @@ import java.util.Iterator;
  * implémentant l'interface InterfacePersonnel.
  */
 public class CompositePersonnel
-implements InterfacePersonnel, Iterable<InterfacePersonnel> {
+implements InterfacePersonnel, Iterable<InterfacePersonnel>, Serializable {
+    /**
+     * Attribut de sérialisation.
+     */
+    private static final long serialVersionUID = 1L;
     /**
      * Liste de membres du personnels d'un même composite.
      */
@@ -66,5 +75,57 @@ implements InterfacePersonnel, Iterable<InterfacePersonnel> {
      */
     public Iterator<InterfacePersonnel> iterator() {
         return list.iterator();
+    }
+    /**
+     * Fonction de sérialisation.
+     * @param path Adresse du fichier
+     */
+    public void serialization(final String path) {
+        ObjectOutputStream oos = null;
+        try {
+            final FileOutputStream fichierOut = new FileOutputStream(path);
+            oos = new ObjectOutputStream(fichierOut);
+            oos.writeObject(this);
+            oos.flush();
+            oos.close();
+        } catch (final java.io.IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.flush();
+                    oos.close();
+                }
+            } catch (final java.io.IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    /**
+     * Fonction de désérialisation.
+     * @param path Adresse du fichier
+     * @return Le personnel deserialisé
+     */
+    public static CompositePersonnel deSerialization(final String path) {
+        ObjectInputStream ois = null;
+        CompositePersonnel cp = null;
+        try {
+            final FileInputStream fichierIn = new FileInputStream(path);
+            ois = new ObjectInputStream(fichierIn);
+            cp = (CompositePersonnel) ois.readObject();
+        } catch (final java.io.IOException e) {
+            e.printStackTrace();
+        } catch (final ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (final java.io.IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return cp;
     }
 }
