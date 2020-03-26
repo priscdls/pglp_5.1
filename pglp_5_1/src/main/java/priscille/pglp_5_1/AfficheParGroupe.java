@@ -69,6 +69,21 @@ implements Iterable<InterfacePersonnel>, Serializable {
         }
     }
     /**
+     * Fonction toString.
+     * @return Une chaine de caractere
+     */
+    public String toString() {
+        String s = "";
+        for (InterfacePersonnel ip2 : file) {
+            if (ip2.getClass() == CompositePersonnel.class) {
+                s += ((CompositePersonnel) ip2).getId() + "\n";
+            } else {
+                s += ip2.toString();
+            }
+        }
+        return s + "\n";
+    }
+    /**
      * Fonction de sérialisation.
      * @param path Adresse du fichier
      */

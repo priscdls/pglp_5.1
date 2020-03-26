@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 /**
  * Classe Personnel représente un membre du personnel.
@@ -31,6 +32,35 @@ public final class Personnel implements InterfacePersonnel, Serializable {
      * Liste des numéro de téléphone du membre du personnel.
      */
     private final ArrayList<String> numTel;
+    /**
+     * Getter de nom.
+     * @return Le nom
+     */
+    public String getNom() {
+        return this.nom;
+    }
+    /**
+     * Getter de prenom.
+     * @return Le prenom
+     */
+    public String getPrenom() {
+        return this.prenom;
+    }
+    /**
+     * Getter de dateNaissance.
+     * @return La date de naissance
+     */
+    public LocalDate getDateNaissance() {
+        return this.dateNaissance;
+    }
+    /**
+     * Getter de numero de telephone.
+     * @return La liste des numero de telephone
+     */
+    @SuppressWarnings("unchecked")
+    public ArrayList<String> getNumTel() {
+        return (ArrayList<String>) this.numTel.clone();
+    }
     /**
      * Pattern Builder.
      *
@@ -94,6 +124,15 @@ public final class Personnel implements InterfacePersonnel, Serializable {
         System.out.println("Nom : " + nom + ", Prenom : " + prenom
                 + ", Date de Naissance : " + dateNaissance
                 + ", Numero(s) de telephone : " + numTel);
+    }
+    /**
+     * Fonction to String.
+     * @return Une chaine de caractere
+     */
+    public String toString() {
+        return "Nom : " + nom + ", Prenom : " + prenom
+                + ", Date de Naissance : " + dateNaissance
+                + ", Numero(s) de telephone : " + numTel + "\n";
     }
     /**
      * Fonction de sérialisation.

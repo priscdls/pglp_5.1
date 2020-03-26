@@ -32,6 +32,13 @@ implements InterfacePersonnel, Iterable<InterfacePersonnel>, Serializable {
      */
     private static int idFin = 1;
     /**
+     * Getter de l'identifiant du Composite.
+     * @return L'identifiant
+     */
+    public final int getId() {
+        return this.id;
+    }
+    /**
      * Constructeur.
      */
     public CompositePersonnel() {
@@ -48,6 +55,17 @@ implements InterfacePersonnel, Iterable<InterfacePersonnel>, Serializable {
         }
     }
     /**
+     * Fonction to String.
+     * @return Une chaine de caractere
+     */
+    public String toString() {
+        String s = "Id : " + id + "\n";
+        for (InterfacePersonnel intP : list) {
+            s += intP.toString();
+        }
+        return s + "\n";
+    }
+    /**
      * Fonction qui ajoute une personne a la liste du personnel.
      * @param intP La personne a ajouter
      */
@@ -60,13 +78,6 @@ implements InterfacePersonnel, Iterable<InterfacePersonnel>, Serializable {
      */
     public void remove(final InterfacePersonnel intP) {
         list.remove(intP);
-    }
-    /**
-     * Getter de l'identifiant du Composite.
-     * @return L'identifiant
-     */
-    public final int getId() {
-        return id;
     }
     /**
      * Fonction qui crée un Itérateur
