@@ -17,6 +17,14 @@ public final class Personnel implements InterfacePersonnel, Serializable {
      */
     private static final long serialVersionUID = 1L;
     /**
+     * Identifiant d'un personnel.
+     */
+    private final int id;
+    /**
+     * Identifiant du composite suivant.
+     */
+    private static int idFin = 1;
+    /**
      * Nom du membre du personnel.
      */
     private final String nom;
@@ -32,6 +40,13 @@ public final class Personnel implements InterfacePersonnel, Serializable {
      * Liste des numéro de téléphone du membre du personnel.
      */
     private final ArrayList<String> numTel;
+    /**
+     * Getter de l'identifiant du personnel.
+     * @return L'identifiant
+     */
+    public int getId() {
+        return this.id;
+    }
     /**
      * Getter de nom.
      * @return Le nom
@@ -66,9 +81,9 @@ public final class Personnel implements InterfacePersonnel, Serializable {
      *
      */
     public static class Builder {
-    /**
-     * Nom du membre du personnel.
-     */
+        /**
+         * Nom du membre du personnel.
+         */
         private final String nom;
         /**
          * Prénom du membre du personnel.
@@ -112,6 +127,7 @@ public final class Personnel implements InterfacePersonnel, Serializable {
      * @param builder
      */
     public Personnel(final Builder builder) {
+        id = idFin++;
         nom = builder.nom;
         prenom = builder.prenom;
         dateNaissance = builder.dateNaissance;

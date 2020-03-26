@@ -111,7 +111,7 @@ implements Iterable<InterfacePersonnel>, Serializable {
     /**
      * Fonction de désérialisation.
      * @param path Adresse du fichier
-     * @return Le personnel deserialisé
+     * @return Le afficheParGroupe deserialisé
      */
     public static AfficheParGroupe deSerialization(final String path) {
         ObjectInputStream ois = null;

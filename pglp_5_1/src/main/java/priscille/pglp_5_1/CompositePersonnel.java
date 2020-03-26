@@ -115,7 +115,7 @@ implements InterfacePersonnel, Iterable<InterfacePersonnel>, Serializable {
     /**
      * Fonction de désérialisation.
      * @param path Adresse du fichier
-     * @return Le personnel deserialisé
+     * @return Le composite deserialisé
      */
     public static CompositePersonnel deSerialization(final String path) {
         ObjectInputStream ois = null;
