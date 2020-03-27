@@ -38,7 +38,7 @@ implements Iterable<InterfacePersonnel>, Serializable {
      * Getter de la file.
      * @return La file de AfficheParGroupe
      */
-	public final ArrayDeque<InterfacePersonnel> getList() {
+    public final ArrayDeque<InterfacePersonnel> getList() {
         return this.file.clone();
     }
     /**

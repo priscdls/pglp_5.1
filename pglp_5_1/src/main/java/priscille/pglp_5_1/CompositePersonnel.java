@@ -43,7 +43,7 @@ implements InterfacePersonnel, Iterable<InterfacePersonnel>, Serializable {
      * @return La liste de composite
      */
     @SuppressWarnings("unchecked")
-	public final ArrayList<InterfacePersonnel> getList() {
+    public final ArrayList<InterfacePersonnel> getList() {
         return (ArrayList<InterfacePersonnel>) this.list.clone();
     }
     /**

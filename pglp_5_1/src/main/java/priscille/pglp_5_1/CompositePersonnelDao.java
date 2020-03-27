@@ -22,65 +22,65 @@ implements Dao<CompositePersonnel>, Serializable {
      * Constructeur.
      */
     public CompositePersonnelDao() {
-    	this.compositePersonnels = new ArrayList<CompositePersonnel>();
+        this.compositePersonnels = new ArrayList<CompositePersonnel>();
     }
     /**
      * Retourne le composite recherché.
      * @param id L'identifiant du composite
      * @return Le composite personnel trouvé
      */
-	public CompositePersonnel get(final int id) {
-		for (CompositePersonnel cp : compositePersonnels) {
-    		if (cp.getId() == id) {
-    			return cp;
+    public CompositePersonnel get(final int id) {
+        for (CompositePersonnel cp : compositePersonnels) {
+            if (cp.getId() == id) {
+                return cp;
             }
         }
-		return null;
-	}
-	/**
+        return null;
+    }
+    /**
      * Retourne la liste.
      * @return La liste du composite.
      */
-	@SuppressWarnings("unchecked")
-	public ArrayList<CompositePersonnel> getAll() {
-		return (ArrayList<CompositePersonnel>)
-				compositePersonnels.clone();
-	}
-	/**
+    @SuppressWarnings("unchecked")
+    public ArrayList<CompositePersonnel> getAll() {
+        return (ArrayList<CompositePersonnel>)
+                compositePersonnels.clone();
+    }
+    /**
      * Ajoute un composite a la liste.
      * @param cp Le composite a ajouter
      */
-	public void ajouter(final CompositePersonnel cp) {
-		compositePersonnels.add(cp);
-	}
-	/**
+    public void ajouter(final CompositePersonnel cp) {
+        compositePersonnels.add(cp);
+    }
+    /**
      * Modifie un composite de la liste.
      * @param cp Le composite a modifier
      * @param params Le parametre a modifier
      */
-	@SuppressWarnings({ "unused", "unchecked" })
-	public void update(final CompositePersonnel cp,
-			final Map<String, Object> params) {
-	    if (params.containsKey("list")) {
-	    	while (!cp.getList().isEmpty()) {
-	    		cp.remove(cp.getList().get(0));
-	    	}
-			ArrayList<InterfacePersonnel> nouvelle =
-					(ArrayList<InterfacePersonnel>)
-					params.get("list");
-			for (InterfacePersonnel ip : nouvelle) {
-				cp.add(ip);
-			}
-	    }
-	}
-	/**
+    @SuppressWarnings("unchecked")
+    public void update(final CompositePersonnel cp,
+            final Map<String, Object> params) {
+        if (params.containsKey("list")) {
+            while (!cp.getList().isEmpty()) {
+                cp.remove(cp.getList().get(0));
+            }
+            ArrayList<InterfacePersonnel> nouvelle =
+                    (ArrayList<InterfacePersonnel>)
+                    params.get("list");
+            for (InterfacePersonnel ip : nouvelle) {
+                cp.add(ip);
+            }
+        }
+    }
+    /**
      * Retire un composite de la liste.
      * @param cp Le composite a retirer
      */
-	public void retirer(final CompositePersonnel cp) {
-		compositePersonnels.remove(cp);
-	}
-	/**
+    public void retirer(final CompositePersonnel cp) {
+        compositePersonnels.remove(cp);
+    }
+    /**
      * Fonction de sérialisation.
      * @param path Adresse du fichier
      */
