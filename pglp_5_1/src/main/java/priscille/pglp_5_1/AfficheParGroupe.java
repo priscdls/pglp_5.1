@@ -20,12 +20,55 @@ implements Iterable<InterfacePersonnel>, Serializable {
     private ArrayDeque<InterfacePersonnel> file =
             new ArrayDeque<InterfacePersonnel>();
     /**
+     * Identifiant d'un AfficheParGroupe.
+     */
+    private final int id;
+    /**
+     * Identifiant du composite suivant.
+     */
+    private static int idFin = 1;
+    /**
+     * Getter de l'identifiant.
+     * @return L'identifiant
+     */
+    public int getId() {
+        return this.id;
+    }
+    /**
+     * Getter de la file.
+     * @return La file de AfficheParGroupe
+     */
+	public final ArrayDeque<InterfacePersonnel> getList() {
+        return this.file.clone();
+    }
+    /**
+     * Constructeur.
+     */
+    public AfficheParGroupe() {
+        id = idFin++;
+        file = new ArrayDeque<InterfacePersonnel>();
+    }
+    /**
      * Fonction qui crée un Itérateur
      * de la liste des personnes du Composite.
      * @return L'iterateur
      */
     public Iterator<InterfacePersonnel> iterator() {
         return file.iterator();
+    }
+    /**
+     * Fonction qui ajoute un InterfacePersonnel a la file.
+     * @param intP L'InterfacePersonnel a ajouter
+     */
+    public void add(final InterfacePersonnel intP) {
+        file.add(intP);
+    }
+    /**
+     * Fonction qui enlève un InterfacePersonnel a la file.
+     * @param intP L'InterfacePersonnel a enlever
+     */
+    public void remove(final InterfacePersonnel intP) {
+        file.remove(intP);
     }
     /**
      * Fonction qui fait un parcours en largeur.

@@ -39,6 +39,14 @@ implements InterfacePersonnel, Iterable<InterfacePersonnel>, Serializable {
         return this.id;
     }
     /**
+     * Getter de la liste.
+     * @return La liste de composite
+     */
+    @SuppressWarnings("unchecked")
+	public final ArrayList<InterfacePersonnel> getList() {
+        return (ArrayList<InterfacePersonnel>) this.list.clone();
+    }
+    /**
      * Constructeur.
      */
     public CompositePersonnel() {
