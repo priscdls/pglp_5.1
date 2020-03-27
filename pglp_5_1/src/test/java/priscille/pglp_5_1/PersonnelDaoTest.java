@@ -83,6 +83,6 @@ public class PersonnelDaoTest {
         PersonnelDao p2 = PersonnelDao.deSerialization("personnel1");
         File f = new File("personnel1");
         f.delete();
-        assertTrue(personnels.getAll().get(0).getNom().equalsIgnoreCase(p2.getAll().get(0).getNom()) && personnels.getAll().get(0).getPrenom().equals(p2.getAll().get(0).getPrenom()) && personnels.getAll().get(0).getDateNaissance().isEqual(p2.getAll().get(0).getDateNaissance())  && personnels.getAll().get(0).getNumTel().containsAll(p2.getAll().get(0).getNumTel()));
+        assertEquals(personnels.getAll().get(0).toString(),p2.getAll().get(0).toString());
 	}
 }
