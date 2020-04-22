@@ -124,8 +124,10 @@ implements InterfacePersonnel, Iterable<InterfacePersonnel>, Serializable {
      * Fonction de désérialisation.
      * @param path Adresse du fichier
      * @return Le composite deserialisé
+     * @throws ClassNotFoundException
      */
-    public static CompositePersonnel deSerialization(final String path) {
+    public static CompositePersonnel deSerialization(final String path)
+            throws ClassNotFoundException {
         ObjectInputStream ois = null;
         CompositePersonnel cp = null;
         try {
@@ -133,8 +135,6 @@ implements InterfacePersonnel, Iterable<InterfacePersonnel>, Serializable {
             ois = new ObjectInputStream(fichierIn);
             cp = (CompositePersonnel) ois.readObject();
         } catch (final java.io.IOException e) {
-            e.printStackTrace();
-        } catch (final ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             try {

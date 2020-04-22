@@ -155,8 +155,10 @@ implements Iterable<InterfacePersonnel>, Serializable {
      * Fonction de désérialisation.
      * @param path Adresse du fichier
      * @return Le afficheParGroupe deserialisé
+     * @throws ClassNotFoundException
      */
-    public static AfficheParGroupe deSerialization(final String path) {
+    public static AfficheParGroupe deSerialization(final String path)
+            throws ClassNotFoundException {
         ObjectInputStream ois = null;
         AfficheParGroupe apg = null;
         try {
@@ -164,8 +166,6 @@ implements Iterable<InterfacePersonnel>, Serializable {
             ois = new ObjectInputStream(fichierIn);
             apg = (AfficheParGroupe) ois.readObject();
         } catch (final java.io.IOException e) {
-            e.printStackTrace();
-        } catch (final ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             try {

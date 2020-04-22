@@ -179,8 +179,10 @@ public final class Personnel implements InterfacePersonnel, Serializable {
      * Fonction de désérialisation.
      * @param path Adresse du fichier
      * @return Le personnel deserialisé
+     * @throws ClassNotFoundException
      */
-    public static Personnel deSerialization(final String path) {
+    public static Personnel deSerialization(final String path)
+            throws ClassNotFoundException {
         ObjectInputStream ois = null;
         Personnel p = null;
         try {
@@ -188,8 +190,6 @@ public final class Personnel implements InterfacePersonnel, Serializable {
             ois = new ObjectInputStream(fichierIn);
             p = (Personnel) ois.readObject();
         } catch (final java.io.IOException e) {
-            e.printStackTrace();
-        } catch (final ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             try {

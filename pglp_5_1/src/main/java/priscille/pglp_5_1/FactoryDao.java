@@ -1,6 +1,11 @@
 package priscille.pglp_5_1;
 
-public class FactoryDao {
+public final class FactoryDao {
+    /**
+     * Constructeur.
+     */
+    private FactoryDao() {
+    }
     /**
      * Fabrique Dao pour Personnel.
      * @return un nouveau PersonnelDao
@@ -26,26 +31,30 @@ public class FactoryDao {
      * Fabrique Dao pour Personnel.
      * @param deserialize un Personnel déja inseré
      * @return un nouveau PersonnelDao
+     * @throws ClassNotFoundException
      */
-    public Dao<Personnel> getPersonnelDao(final String deserialize) {
+    public static Dao<Personnel> getPersonnelDao(final String deserialize)
+            throws ClassNotFoundException {
         return PersonnelDao.deSerialization(deserialize);
     }
     /**
      * Fabrique Dao pour CompositePersonnel.
      * @param deserialize un CompositePersonnel déja inseré
      * @return un nouveau CompositePersonnelDao
+     * @throws ClassNotFoundException
      */
-    public Dao<CompositePersonnel> getCompositePersonnelDao(
-            final String deserialize) {
+    public static Dao<CompositePersonnel> getCompositePersonnelDao(
+            final String deserialize) throws ClassNotFoundException {
         return CompositePersonnelDao.deSerialization(deserialize);
     }
     /**
      * Fabrique Dao pour AfficheParGroupe.
      * @param deserialize un AfficheParGroupe déja inseré
      * @return un nouveau AfficheParGroupeDao
+     * @throws ClassNotFoundException
      */
-    public Dao<AfficheParGroupe> getAfficheParGroupeDao(
-            final String deserialize) {
+    public static Dao<AfficheParGroupe> getAfficheParGroupeDao(
+            final String deserialize) throws ClassNotFoundException {
         return  AfficheParGroupeDao.deSerialization(deserialize);
     }
 }
