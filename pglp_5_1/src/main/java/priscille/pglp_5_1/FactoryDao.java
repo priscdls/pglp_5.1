@@ -21,13 +21,6 @@ public final class FactoryDao {
         return new CompositePersonnelDao();
     }
     /**
-     * Fabrique Dao pour AfficheParGroupe.
-     * @return un nouvel AfficheParGroupeDao
-     */
-    public static Dao<AfficheParGroupe> getAfficheParGroupeDao() {
-        return new AfficheParGroupeDao();
-    }
-    /**
      * Fabrique Dao pour Personnel.
      * @param deserialize un Personnel déja inseré
      * @return un nouveau PersonnelDao
@@ -46,15 +39,5 @@ public final class FactoryDao {
     public static Dao<CompositePersonnel> getCompositePersonnelDao(
             final String deserialize) throws ClassNotFoundException {
         return CompositePersonnelDao.deSerialization(deserialize);
-    }
-    /**
-     * Fabrique Dao pour AfficheParGroupe.
-     * @param deserialize un AfficheParGroupe déja inseré
-     * @return un nouveau AfficheParGroupeDao
-     * @throws ClassNotFoundException
-     */
-    public static Dao<AfficheParGroupe> getAfficheParGroupeDao(
-            final String deserialize) throws ClassNotFoundException {
-        return  AfficheParGroupeDao.deSerialization(deserialize);
     }
 }

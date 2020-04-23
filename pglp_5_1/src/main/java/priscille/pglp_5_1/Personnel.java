@@ -111,7 +111,11 @@ public final class Personnel implements InterfacePersonnel, Serializable {
             this.nom = n;
             this.prenom = p;
             this.dateNaissance = date;
-            this.numTel = num;
+            if (num != null) {
+                this.numTel = num;
+            } else {
+                this.numTel = new ArrayList<String>();
+            }
         }
         /**
          * Fonction qui construit une variable
